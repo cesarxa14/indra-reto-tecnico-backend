@@ -1,0 +1,29 @@
+service: reto-tecnico-indra
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-2
+  timeout: 120
+
+custom:
+  settings:
+    dev:
+      env:
+        STARWARS_API_URL: https://swapi.py4e.com/api
+        
+
+
+functions:
+  api:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: ANY
+          path: 'reto-tecnico-indra/{proxy+}'
+          cors: true
+  

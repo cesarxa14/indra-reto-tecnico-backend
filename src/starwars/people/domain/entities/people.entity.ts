@@ -1,4 +1,5 @@
 export interface PeopleEntity {
+  id: string;
   name: string;
   birth_year: string;
   eye_color: string;
@@ -9,5 +10,7 @@ export interface PeopleEntity {
   skin_color: string;
   homeworld: string;
   url: string;
-  films: string[]
+  films: string[];
+  created: Date;
+  edited: Date;
 }

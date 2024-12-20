@@ -1,6 +1,7 @@
-import { Controller, Get, HttpStatus, Res } from "@nestjs/common";
+import { Body, Controller, Get, HttpStatus, Post, Res } from "@nestjs/common";
 import { Response } from "express";
 import { PeopleService } from "../services/people.service";
+import { CreatePeopleDto } from "../dtos/create-people.dto";
 
 
 
@@ -20,6 +21,17 @@ export default class PeopleController {
     } catch(err) {
       console.log('err: ', err)
       return res.status(HttpStatus.BAD_REQUEST).json({errores:  err.message});
+    }
+  }
+
+  @Post()
+  async createPeople(@Body() createDto: CreatePeopleDto, @Res() res: Response) {
+    try {
+      const newUrl = await this.peopleService.createPeople(createDto);
+
+      // return res.status(HttpStatus.OK).json(createResponse('ok-create-update-item', newUrl));
+    } catch (error) {
+      // return res.status(HttpStatus.BAD_REQUEST).json(createResponse('errores', error.message));
     }
   }
 }

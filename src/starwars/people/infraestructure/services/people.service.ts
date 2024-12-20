@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { PeopleUseCase } from "../../application/people.use.case";
 import { PeopleApiRepository } from "../data-source/people-api/people-api.repository";
+import { CreatePeopleDto } from "../dtos/create-people.dto";
 
 
 
@@ -15,5 +16,9 @@ export class PeopleService {
   async getAllPeople(){
     console.log('service')
     return await this.peopleUseCase.getAllPeople();
+  }
+
+  async createPeople(payload: CreatePeopleDto) {
+    return await this.peopleUseCase.createPeople(payload);
   }
 }

@@ -1,4 +1,5 @@
 import { VehicleRepository } from "../domain/ports/vehicle.repository";
+import { CreateVehicleDto } from "../infraestructure/dtos/create-vehicle.dto";
 
 
 export class VehicleUseCase {
@@ -16,6 +17,14 @@ export class VehicleUseCase {
           console.log('err: ', err)
           throw err;
         }
+    }
+
+    async createVehicle(payload: CreateVehicleDto){
+      try{
+        console.log('use case')
+      } catch(err) {
+
       }
+    }
 
 }

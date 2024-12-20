@@ -19,10 +19,7 @@ export class PeopleApiRepository implements PeopleRepository {
     @InjectRepository(PeopleTypeOrmEntity)
     private peopleRepository: Repository<PeopleEntity>,
   ){
-    // this.axiosInstance = axios.create({
-    //   baseURL: STARWARS_API_URL, // URL base de la API de Star Wars
-    //   timeout: 5000, // Tiempo de espera para las solicitudes
-    // });
+
   }
   async createPeople(payload: PeopleCreateData): Promise<PeopleEntity> {
     try {

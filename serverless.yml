@@ -13,7 +13,7 @@ provider:
   region: us-east-2
   timeout: 120
   iam:
-    role: arn:aws:iam::319643186591:role/omnichannel-lambda-access-desa-role
+    role: ${env:IAM_ROLE} 
   deploymentBucket:
     name: ${self:custom.settings.${opt:stage}.env.deployBucket}
     serverSideEncryption: AES256
@@ -26,12 +26,12 @@ provider:
     DB_NAME: ${self:custom.settings.${opt:stage, 'dev'}.env.DB_NAME}
     DB_PASSWORD: ${self:custom.settings.${opt:stage, 'dev'}.env.DB_PASSWORD}
     DB_USERNAME: ${self:custom.settings.${opt:stage, 'dev'}.env.DB_USERNAME}
+    SERVER_URL: ${self:custom.settings.${opt:stage, 'dev'}.env.SERVER_URL}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
   settings:
     dev:
-      deployBucket: omnichannel-dev-lambda
       env:
         SWAPI_API_URL: ${env:SWAPI_API_URL}
         DB_HOST: ${env:DB_HOST_DEV}
@@ -42,6 +42,7 @@ custom:
         apiId: ${env:apiId}
         apiRootResourceId: ${env:apiRootResourceId}
         deployBucket: ${env:deployBucket}
+        SERVER_URL: http://localhost:3000/dev/reto-tecnico-indra
 
     prod:
       env:
@@ -54,10 +55,11 @@ custom:
         apiId: ${env:apiId}
         apiRootResourceId: ${env:apiRootResourceId}
         deployBucket: ${env:deployBucket}
+        SERVER_URL: https://qu2cqxv2kj.execute-api.us-east-2.amazonaws.com/prod/reto-tecnico-indra
   prune:
     automatic: true
     number: 1
-        
+
 
 
 functions:
@@ -68,4 +70,28 @@ functions:
           method: ANY
           path: 'reto-tecnico-indra/{proxy+}'
           cors: true
+
+package:
+  exclude:
+  - node_modules/typescript/**
+  - node_modules/typescript/**
+  - node_modules/ts-node/**
+  - node_modules/ts-loader/**
+  - node_modules/ts-jest/**
+  - node_modules/supertest/**
+  - node_modules/source-map-support/**
+  - node_modules/serverless-prune-plugin/**
+  - node_modules/serverless-offline-scheduler/**
+  - node_modules/serverless-offline/**
+  - node_modules/prettier/**
+  - node_modules/jest/**
+  - node_modules/eslint-plugin-prettier/**
+  - node_modules/eslint-config-prettier/**
+  - node_modules/eslint/**
+  - node_modules/@typescript-eslint/parser/**
+  - node_modules/@typescript-eslint/eslint-plugin/**
+  - node_modules/@types/**
+  - node_modules/@nestjs/testing/**
+  - node_modules/@nestjs/schematics/**
+  - node_modules/@nestjs/@nestjs/cli/**
   

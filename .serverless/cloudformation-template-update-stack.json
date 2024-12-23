@@ -12,8 +12,8 @@
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
-          "S3Bucket": "omnichannel-dev-lambda",
-          "S3Key": "serverless/cesar-prueba-backend/prod/1734950029756-2024-12-23T10:33:49.756Z/cesar-prueba-backend.zip"
+          "S3Bucket": "prueba-ce",
+          "S3Key": "serverless/cesar-prueba-backend/prod/1734984641134-2024-12-23T20:10:41.134Z/cesar-prueba-backend.zip"
         },
         "Handler": "dist/serverless.handler",
         "Runtime": "nodejs20.x",
@@ -26,7 +26,8 @@
             "DB_HOST": "userdb.cmompg7okqmo.us-east-2.rds.amazonaws.com",
             "DB_NAME": "prueba-cesar",
             "DB_PASSWORD": "d0nejr5jvL5cP1djY7GY",
-            "DB_USERNAME": "admin"
+            "DB_USERNAME": "admin",
+            "SERVER_URL": "https://qu2cqxv2kj.execute-api.us-east-2.amazonaws.com/prod/reto-tecnico-indra"
           }
         },
         "Role": "arn:aws:iam::319643186591:role/omnichannel-lambda-access-desa-role"
@@ -35,14 +36,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersioncsoFA2QTHsohKVyB8flgi3Tj6SYsdK4cADKpgYNNn4A": {
+    "ApiLambdaVersion6fyzE7GeemJPQqOsyhbAO1Fv4cJT7XIk5etsqbIatJg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "zDloKAWP+uvh5zwhiSXDAGmfufHYHomtEnYss41ibjA="
+        "CodeSha256": "6XfV8QMfmMTEz8YcjVWq0lUZm/bbV7bB9qIMpU7muus="
       }
     },
     "ApiGatewayResourceRetoDashtecnicoDashindra": {
@@ -150,7 +151,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1734949950673": {
+    "ApiGatewayDeployment1734984578236": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": "qu2cqxv2kj",
@@ -199,7 +200,7 @@
   },
   "Outputs": {
     "ServerlessDeploymentBucketName": {
-      "Value": "omnichannel-dev-lambda",
+      "Value": "prueba-ce",
       "Export": {
         "Name": "sls-cesar-prueba-backend-prod-ServerlessDeploymentBucketName"
       }
@@ -207,7 +208,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersioncsoFA2QTHsohKVyB8flgi3Tj6SYsdK4cADKpgYNNn4A"
+        "Ref": "ApiLambdaVersion6fyzE7GeemJPQqOsyhbAO1Fv4cJT7XIk5etsqbIatJg"
       },
       "Export": {
         "Name": "sls-cesar-prueba-backend-prod-ApiLambdaFunctionQualifiedArn"

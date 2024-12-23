@@ -12,7 +12,7 @@
       "iam": {
         "role": "arn:aws:iam::319643186591:role/omnichannel-lambda-access-desa-role"
       },
-      "deploymentBucket": "omnichannel-dev-lambda",
+      "deploymentBucket": "prueba-ce",
       "apiGateway": {
         "restApiId": "qu2cqxv2kj",
         "restApiRootResourceId": "zeyuwoe3o3"
@@ -22,12 +22,13 @@
         "DB_HOST": "userdb.cmompg7okqmo.us-east-2.rds.amazonaws.com",
         "DB_NAME": "prueba-cesar",
         "DB_PASSWORD": "d0nejr5jvL5cP1djY7GY",
-        "DB_USERNAME": "admin"
+        "DB_USERNAME": "admin",
+        "SERVER_URL": "https://qu2cqxv2kj.execute-api.us-east-2.amazonaws.com/prod/reto-tecnico-indra"
       },
       "stage": "dev",
       "versionFunctions": true,
       "deploymentBucketObject": {
-        "name": "omnichannel-dev-lambda",
+        "name": "prueba-ce",
         "serverSideEncryption": "AES256"
       },
       "compiledCloudFormationTemplate": {
@@ -44,8 +45,8 @@
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "omnichannel-dev-lambda",
-                "S3Key": "serverless/cesar-prueba-backend/prod/1734950029756-2024-12-23T10:33:49.756Z/cesar-prueba-backend.zip"
+                "S3Bucket": "prueba-ce",
+                "S3Key": "serverless/cesar-prueba-backend/prod/1734984641134-2024-12-23T20:10:41.134Z/cesar-prueba-backend.zip"
               },
               "Handler": "dist/serverless.handler",
               "Runtime": "nodejs20.x",
@@ -58,7 +59,8 @@
                   "DB_HOST": "userdb.cmompg7okqmo.us-east-2.rds.amazonaws.com",
                   "DB_NAME": "prueba-cesar",
                   "DB_PASSWORD": "d0nejr5jvL5cP1djY7GY",
-                  "DB_USERNAME": "admin"
+                  "DB_USERNAME": "admin",
+                  "SERVER_URL": "https://qu2cqxv2kj.execute-api.us-east-2.amazonaws.com/prod/reto-tecnico-indra"
                 }
               },
               "Role": "arn:aws:iam::319643186591:role/omnichannel-lambda-access-desa-role"
@@ -67,14 +69,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersioncsoFA2QTHsohKVyB8flgi3Tj6SYsdK4cADKpgYNNn4A": {
+          "ApiLambdaVersion6fyzE7GeemJPQqOsyhbAO1Fv4cJT7XIk5etsqbIatJg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "zDloKAWP+uvh5zwhiSXDAGmfufHYHomtEnYss41ibjA="
+              "CodeSha256": "6XfV8QMfmMTEz8YcjVWq0lUZm/bbV7bB9qIMpU7muus="
             }
           },
           "ApiGatewayResourceRetoDashtecnicoDashindra": {
@@ -182,7 +184,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1734949950673": {
+          "ApiGatewayDeployment1734984578236": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": "qu2cqxv2kj",
@@ -231,7 +233,7 @@
         },
         "Outputs": {
           "ServerlessDeploymentBucketName": {
-            "Value": "omnichannel-dev-lambda",
+            "Value": "prueba-ce",
             "Export": {
               "Name": "sls-cesar-prueba-backend-prod-ServerlessDeploymentBucketName"
             }
@@ -239,7 +241,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersioncsoFA2QTHsohKVyB8flgi3Tj6SYsdK4cADKpgYNNn4A"
+              "Ref": "ApiLambdaVersion6fyzE7GeemJPQqOsyhbAO1Fv4cJT7XIk5etsqbIatJg"
             },
             "Export": {
               "Name": "sls-cesar-prueba-backend-prod-ApiLambdaFunctionQualifiedArn"
@@ -277,7 +279,6 @@
       "stage": "prod",
       "settings": {
         "dev": {
-          "deployBucket": "omnichannel-dev-lambda",
           "env": {
             "SWAPI_API_URL": "https://swapi.py4e.com/api",
             "DB_HOST": "localhost",
@@ -287,7 +288,8 @@
             "DB_USERNAME": "root",
             "apiId": "qu2cqxv2kj",
             "apiRootResourceId": "zeyuwoe3o3",
-            "deployBucket": "omnichannel-dev-lambda"
+            "deployBucket": "prueba-ce",
+            "SERVER_URL": "http://localhost:3000/dev/reto-tecnico-indra"
           }
         },
         "prod": {
@@ -300,7 +302,8 @@
             "DB_USERNAME": "admin",
             "apiId": "qu2cqxv2kj",
             "apiRootResourceId": "zeyuwoe3o3",
-            "deployBucket": "omnichannel-dev-lambda"
+            "deployBucket": "prueba-ce",
+            "SERVER_URL": "https://qu2cqxv2kj.execute-api.us-east-2.amazonaws.com/prod/reto-tecnico-indra"
           }
         }
       },
@@ -349,7 +352,7 @@
         "timeout": 120,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersioncsoFA2QTHsohKVyB8flgi3Tj6SYsdK4cADKpgYNNn4A"
+        "versionLogicalId": "ApiLambdaVersion6fyzE7GeemJPQqOsyhbAO1Fv4cJT7XIk5etsqbIatJg"
       }
     },
     "configValidationMode": "warn",
@@ -369,6 +372,35 @@
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "package": {
+        "exclude": [
+          "node_modules/typescript/**",
+          "node_modules/typescript/**",
+          "node_modules/ts-node/**",
+          "node_modules/ts-loader/**",
+          "node_modules/ts-jest/**",
+          "node_modules/supertest/**",
+          "node_modules/source-map-support/**",
+          "node_modules/serverless-prune-plugin/**",
+          "node_modules/serverless-offline-scheduler/**",
+          "node_modules/serverless-offline/**",
+          "node_modules/prettier/**",
+          "node_modules/jest/**",
+          "node_modules/eslint-plugin-prettier/**",
+          "node_modules/eslint-config-prettier/**",
+          "node_modules/eslint/**",
+          "node_modules/@typescript-eslint/parser/**",
+          "node_modules/@typescript-eslint/eslint-plugin/**",
+          "node_modules/@types/**",
+          "node_modules/@nestjs/testing/**",
+          "node_modules/@nestjs/schematics/**",
+          "node_modules/@nestjs/@nestjs/cli/**"
+        ],
+        "artifactsS3KeyDirname": "serverless/cesar-prueba-backend/prod/code-artifacts",
+        "deploymentBucket": "prueba-ce",
+        "artifact": "C:\\Users\\Gretta\\OneDrive\\Escritorio\\Cesar\\Aplicaciones\\reto-indra\\indra-reto-tecnico-backend\\.serverless\\cesar-prueba-backend.zip",
+        "artifactDirectoryName": "serverless/cesar-prueba-backend/prod/1734984641134-2024-12-23T20:10:41.134Z"
       }
     },
     "layers": {},
@@ -376,7 +408,7 @@
     "artifact": "C:\\Users\\Gretta\\OneDrive\\Escritorio\\Cesar\\Aplicaciones\\reto-indra\\indra-reto-tecnico-backend\\.serverless\\cesar-prueba-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/cesar-prueba-backend/prod/1734950029756-2024-12-23T10:33:49.756Z",
+    "artifactDirectoryName": "serverless/cesar-prueba-backend/prod/1734984641134-2024-12-23T20:10:41.134Z",
     "artifact": "cesar-prueba-backend.zip"
   }
 }

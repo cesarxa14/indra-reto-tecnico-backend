@@ -15,9 +15,8 @@ async function bootstrap() {
     const config = new DocumentBuilder()
       .setTitle('Documentacion API Reto Tecnico')
       .setDescription('En este documento Swagger listaré los endpoints desarrollados para la prueba')
-      .addServer('http://localhost:3000/dev/reto-tecnico-indra')
-      .addServer('http://localhost:3000/prod/reto-tecnico-indra')
-      // .addServer(`${process.env.API_URL}/reto-tecnico-indra`) 
+      .addServer(process.env.SERVER_URL)
+     
       .setVersion('1.0')
       .addTag('Vehicles')
       .addTag('People-Swapi')

@@ -11,12 +11,15 @@ export class PeopleUseCase {
 
   constructor(private peopleRepository: PeopleRepository){}
 
+  /**
+   * Obtener la lista de la entidad People de SWAPI
+   * @returns 
+   */
   async getAllPeople(){
     try {
       console.log('use case')
       const peopleResult = await this.peopleRepository.getAllPeople();
-      // console.log('results', peopleResult)
-
+      // Traducimos los campos de la respuesta a español
       const translatedResponse = traslateGetPeople(peopleResult, tranlationGetPeopleMap);
 
       return translatedResponse;

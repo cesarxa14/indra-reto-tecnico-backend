@@ -46,10 +46,10 @@ export const  VehicleTypeOrmEntity = new EntitySchema<VehicleEntity>({
             type: "varchar"
         },
         films: {
-            type: "varchar"
+            type: "json"
         },
         pilots: {
-            type: "varchar"
+            type: "json"
         },
         url: {
             type: "varchar"

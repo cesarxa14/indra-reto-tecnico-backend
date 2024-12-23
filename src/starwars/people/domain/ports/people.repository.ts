@@ -5,6 +5,5 @@ import { PeopleCreateData } from "./people-create-data";
 
 export interface PeopleRepository {
   getAllPeople(): Promise<PeopleEntity[]>;
-  createPeople(payload: PeopleCreateData): Promise<PeopleEntity>;
 
 }

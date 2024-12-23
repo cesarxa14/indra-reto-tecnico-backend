@@ -1,6 +1,9 @@
+import { traslateGetPeople } from "src/utils/traslate-get-people";
 import { PeopleCreateData } from "../domain/ports/people-create-data";
 import { PeopleRepository } from "../domain/ports/people.repository";
 import { CreatePeopleDto } from "../infraestructure/dtos/create-people.dto";
+import { tranlationGetPeopleMap } from "./traslate/traslate-get-people";
+
 
 
 
@@ -12,9 +15,12 @@ export class PeopleUseCase {
     try {
       console.log('use case')
       const peopleResult = await this.peopleRepository.getAllPeople();
-      console.log('results', peopleResult)
-      console.log('peopleResult use case')
-      return peopleResult;
+      // console.log('results', peopleResult)
+
+      const translatedResponse = traslateGetPeople(peopleResult, tranlationGetPeopleMap);
+
+      return translatedResponse;
+  
 
     } catch(err) {
       console.log('err: ', err)
@@ -22,13 +28,4 @@ export class PeopleUseCase {
     }
   }
 
-  async createPeople(payload: CreatePeopleDto) {
-    try{
-      // const newPayload: PeopleCreateData = {...payload}
-      // const createPeople = await this.peopleRepository.createPeople(newPayload)
-    } catch(err) {
-      console.log('err: ', err)
-      throw err;
-    }
-  }
 }

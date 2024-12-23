@@ -12,7 +12,7 @@ export interface VehicleEntity {
     cargo_capacity:string;
     consumables:string;
     films:string[];
-    pilots:string;
+    pilots:string[];
     url:string;
     created:Date | string;
     edited:Date | string;

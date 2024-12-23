@@ -18,7 +18,7 @@ export class PeopleService {
     return await this.peopleUseCase.getAllPeople();
   }
 
-  async createPeople(payload: CreatePeopleDto) {
-    return await this.peopleUseCase.createPeople(payload);
-  }
+  // async createPeople(payload: CreatePeopleDto) {
+  //   return await this.peopleUseCase.createPeople(payload);
+  // }
 }

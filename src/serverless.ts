@@ -16,9 +16,11 @@ async function bootstrap() {
       .setTitle('Documentacion API Reto Tecnico')
       .setDescription('En este documento Swagger listaré los endpoints desarrollados para la prueba')
       .addServer('http://localhost:3000/dev/reto-tecnico-indra')
+      .addServer('http://localhost:3000/prod/reto-tecnico-indra')
       // .addServer(`${process.env.API_URL}/reto-tecnico-indra`) 
       .setVersion('1.0')
       .addTag('Vehicles')
+      .addTag('People-Swapi')
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('documentation', app, document);
